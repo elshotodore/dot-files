@@ -8,5 +8,5 @@
 	co = checkout
 	last = log --name-status HEAD^..HEAD
 [user]
-        name = NicolasRitouet
+        name = Op3r4tor
         email = nicolas@ritouet.com
