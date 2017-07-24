@@ -1,0 +1,476 @@
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+
+###### BE ROOT MY FRIEND
+su -
+#################################
+### AS ROOT
+#################################
+apt-get -y purge openjdk-\* \
+&& apt-get -y purge hexchat\* \
+&& apt-get -y purge pidgin \
+&& apt-get -y update && apt-get -y upgrade \
+&& apt-get -y install chromium-browser  \
+&& apt-get -y install libxss1 libappindicator1 libindicator7 \
+&& cd /home/elshotodore/Downloads \
+&& wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+&& chown elshotodore:elshotodore google-chrome-stable_current_amd64.deb \
+&& dpkg -i google-chrome*.deb \
+&& apt-get -y install sublime-text \
+&& apt-get -y install git \
+&& apt-get -y install maven \
+&& add-apt-repository -y ppa:webupd8team/java \
+&& apt-get -y update \
+&& apt-get -y install oracle-java8-installer \
+&& apt-get -y install oracle-java8-set-default \
+&& java -version \
+&& apt-get -y install build-essential \
+&& apt-get -y install curl \
+&& apt-get -y install filezilla \g
+&& apt-get -y install gparted \
+&& apt-get -y install rdesktop \
+&& apt-get -y install guake \
+&& apt-get -y install virtualbox virtualbox-qt virtualbox-dkms virtualbox-guest-dkms \
+&& apt-get -y install apache2 \
+&& sed -i 's/Listen 80/Listen 8888/g' /etc/apache2/ports.conf \
+&& apt-get install -y php7.0 php7.0-cli php7.0-mcrypt php7.0-mbstring php7.0-mysql libapache2-mod-php7.0 \
+&& service apache2 restart \
+&& apt-get -y install mysql-client-5.7 mysql-server-5.7 \
+&& service mysql stop \
+&& service mysql start \
+&& mkdir /data \
+&& mkdir /data/elasticsearch \
+&& mkdir /data/elasticsearch/data \
+&& mkdir /data/elasticsearch/logs \
+&& mkdir /data/solr \
+&& mkdir /data/solr/data \
+&& mkdir /data/solr/logs \
+&& mkdir /data/kibana \
+&& mkdir /data/kibana/logs \
+&& chown -R elshotodore:elshotodore /opt \
+&& chown -R elshotodore:elshotodore /data \
+&& chown -R elshotodore:elshotodore /var/www/html \
+&& exit
+
+
+
+
+#################################
+### AS USER
+#################################
+cd \
+&& mkdir workspace \
+&& cd workspace \
+&& git clone https://github.com/elshotodore/dot-files.git \
+&& cd dot-files \
+&& ./install_dotfiles.sh \
+&& cd ~/Downloads \
+&& mkdir DONE \
+&& echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bash_profile
+ 
+
+
+###### phpMyAdmin (Check the urls)
+cd ~/Downloads \
+&& wget https://files.phpmyadmin.net/phpMyAdmin/4.6.6/phpMyAdmin-4.6.6-all-languages.tar.gz \
+&& tar xvzf phpMyAdmin-4.6.6-all-languages.tar.gz \
+&& mv phpMyAdmin-4.6.6-all-languages /var/www/html/
+&& cd /var/www/html/phpMyAdmin-4.6.6-all-languages \
+&& cp config.sample.inc.php config.inc.php \
+&& sed -i "s/$cfg\['blowfish_secret'\] = '';/$cfg\['blowfish_secret'\] = 'ALLES SUPER GEHEIM HIER ABER WIE';/g" /var/www/html/phpMyAdmin-4.6.6-all-languages/config.inc.php
+&& ln -s /var/www/html/phpMyAdmin-4.6.6-all-languages /var/www/html/phpmyadmin
+
+
+
+###### IntelliJ (Check the urls)
+cd ~/Downloads \
+&& wget https://download.jetbrains.com/idea/ideaIC-2016.3.4.tar.gz \
+&& tar xvzf ideaIC-2017.2.tar.gz \
+&& mv idea-IC-.* /opt \
+&& ln -s /opt/idea-IC-.* /opt/idea \
+&& mv ideaIC-2017.2.tar.gz DONE/ \
+&& echo "export PATH=\$PATH:/opt/idea/bin" >> ~/.bash_path
+
+###### Elastic Search Setup (Check the url)
+cd ~/Downloads \
+&& wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.0.tar.gz \
+&& tar xvzf elasticsearch-5.5.0.tar.gz \
+&& mv elasticsearch-5.5.0 /opt \
+&& ln -s /opt/elasticsearch-5.5.0 /opt/elasticsearch \
+&& mv elasticsearch-5.5.0.tar.gz DONE/ \
+&& echo "export PATH=\$PATH:/opt/elasticsearch/bin" >> ~/.bash_path
+
+##### Elastic Search Configuration (CLUSTER NAME, NODE NAME, PATH TO DATA, PATH TO LOGS)
+cp /opt/elasticsearch/config/elasticsearch.yml /opt/elasticsearch/config/elasticsearch.yml_ORIGINAL \
+&& sed -i "s/#cluster.name: my-application/cluster.name: m92/g" /opt/elasticsearch/config/elasticsearch.yml \
+&& sed -i "s/#node.name: node-1/node.name: node1/g" /opt/elasticsearch/config/elasticsearch.yml \
+&& sed -i "s/#path.data: \/path\/to\/data/path.data: \/data\/elasticsearch\/data/g" /opt/elasticsearch/config/elasticsearch.yml \
+&& sed -i "s/#path.logs: \/path\/to\/logs/path.logs: \/data\/elasticsearch\/logs/g" /opt/elasticsearch/config/elasticsearch.yml
+
+
+
+###### Kibana (Check the url)
+cd ~/Downloads \
+&& wget https://artifacts.elastic.co/downloads/kibana/kibana-5.5.0-linux-x86_64.tar.gz \
+&& tar xvzf kibana-5.5.0-linux-x86_64.tar.gz \
+&& mv kibana-5.5.0-linux-x86_64 /opt \
+&& ln -s /opt/kibana-5.5.0-linux-x86_64 /opt/kibana \
+&& mv kibana-5.5.0-linux-x86_64.tar.gz DONE/ \
+&& echo "export PATH=\$PATH:/opt/kibana/bin" >> ~/.bash_path
+
+###### Kibana Configuration
+cp /opt/kibana/config/kibana.yml /opt/kibana/config/kibana.yml_ORIGINAL \
+&& sed -i "s/#server.name: \"your-hostname\"/server.name: \"kibana-m92\"/g" /opt/kibana/config/kibana.yml
+
+
+
+###### Solr Setup (Check the url)
+cd ~/Downloads \
+&& wget http://apache.lauf-forum.at/lucene/solr/6.4.1/solr-6.4.1.tgz \
+&& tar xvzf solr-6.4.1.tgz \
+&& mv solr-6.4.1 /opt \
+&& ln -s /opt/solr-6.4.1 /opt/solr \
+&& mv solr-6.4.1.tgz DONE/ \
+&& echo "export PATH=\$PATH:/opt/solr/bin" >> ~/.bash_path
+
+##### SOLR Configuration 
+# DB importer
+cd ~/Downloads \
+&& wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.40.tar.gz \
+&& tar xzvf mysql-connector-java-5.1.40.tar.gz \
+&& cd mysql-connector-java-5.1.40 \
+&& mkdir /opt/solr/contrib/dataimporthandler/lib \
+&& cp mysql-connector-java-*.jar /opt/solr/contrib/dataimporthandler/lib
+# Core
+see > https://github.com/elshotodore/retarded-submarine-from-space/tree/master/scripts/solr/labomba
+
+# More SOLR setup 
+ls- ./solr create_core -c <CORE_NAME>
+- /opt/solr/server/solr/<CORE_NAME>
+- set data dir, index dir, data import handler (data-config.xml) etc.
+
+
+###################################################################################################################
+### Licenses
+###################################################################################################################
+Licenses:
+Sublime Text
+----- BEGIN LICENSE -----
+CLK srl
+3 User License
+EA7E-824318
+A43FD00B 4DF245AC 3AA374ED 01D4ACFB
+38EE5EFC 880118B8 9DD56E42 6AE6C9A6
+B01405D9 63FCBE08 047C4CE9 17720910
+A1515613 3DB9B451 85156A01 409C8C95
+BC863B17 47BA54AA 1EE2653D CE4972D3
+BF4F1312 1DEA3183 64DFBC8C 26D36012
+4E96273E D81C8156 B019347F 938B6395
+A476534A 968E7780 DFF408C5 1EBCD32D
+------ END LICENSE ------
+or
+--- BEGIN LICENSE ----
+Caige Nichols
+Single User License
+
+EA7E-794716
+334A7853 0880621B FA263B0F 9B6E966C
+12E492C3 D9F6DAB7 4FC923C5 F82EEB40
+7DEB1BB4 58BB25FA 1F039719 83E3FACA
+8E18F727 00E333D9 14E70FEA 19BB79AB
+DB355FD2 E2009690 D3F8B535 5DF08DDA
+86B466DF 82A6693A C528536E D464623F
+9E290EA4 487F9A3A 68DE7A31 9A6C4EEB
+0D55670C 948A2CFB AD67B10A 91FBB6C7
+----- END LICENSE ----
+
+
+IntelliJ 14.1.4
+ychon
+11298-D4XZY-Y97M4-D6QNW-TW3K2-91IQ7
+
+phpStorm
+james
+===== LICENSE BEGIN ===== 
+2535-D78561T
+00002GsyIOk9pydBM!iftABgtJDVAy
+faN47vQqIMLKC!uc"4YORRqEc8!1j2
+I6iSfcLcCwXP"7OefWGoA25LEcDMEh
+===== LICENSE END =====
+
+Username : Admin
+Activation Key :
+39871-D93633T
+00000fgoycKNF8rjD9mBNntslpAmx6
+LBnoXXnyAVQZKic6h2″oA7UIsNc8SV
+rEEVOyRH7wTdOC!evOlC7t46kx4ZTP
+
+###################################################################################################################
+### Setup
+###################################################################################################################
+Now setup individual programs
+
+# Kodi Media Center
+# http://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux
+apt-get -y purge kodi* \
+&& apt-get -y autoremove \
+&& apt-get -y install software-properties-common \
+&& add-apt-repository -y ppa:team-xbmc/ppa \
+&& apt-get -y update \
+&& apt-get -y install kodi 
+
+# Kodi add xStream (from super repo)
+- Download the addon zip file -> http://xstream-addon.square7.ch/showthread.php?tid=1
+- Home - Addons - Package Icon on top - Install from zip file - Select the downloaded file on disk and install
+- Home - Video - Add-ons - Get more - xStream or whatever you like should now be in the list
+
+
+# Steam :)
+cd ~/Downloads \
+&& wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
+&& dpkg -i steam_latest.deb
+
+# Sublime text updates
+- https://packagecontrol.io/installation
+- View / Console
+# Sublime text plugins
+- Package Control - Install Packages
+- Sublime Server
+- Pretty JSON
+- Word Count
+- AWK Highlighting
+
+# git
+- git config --global user.email "<EMAIL>"
+- git config --global user.name "<USERNAME>"
+- adding ssh keys -> https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+- change the default editor for git > git config --global core.editor subl
+
+# Browser Addons
+- ublock origin
+- Advanced REST client
+- Get Them All Downloader
+
+# Atom editor (Check the version)
+# https://atom.io/
+cd ~/Downloads \
+&& wget https://github.com/atom/atom/releases/download/v1.14.3/atom-amd64.tar.gz \
+&& tar xzvf atom-amd64.tar.gz \
+&& mv atom-1.14.3-amd64 /opt \
+&& ln -s /opt/atom-1.14.3-amd64 /opt/atom \
+&& mv atom-amd64.tar.gz DONE/ \
+&& echo "export PATH=\$PATH:/opt/atom" >> ~/.bash_path \
+&& source ~/.bash_path
+
+# Nuclide (ide for react) (Check theato	 version)
+# https://nuclide.io/
+
+# Kafka – check for latest version
+- http://www.apache.org/dyn/closer.lua/kafka
+
+# Virtual Box
+# Windows 7 64-Bit ISO
+- http://winfuture.de/downloadvorschalt,3291.html
+# Windows 7 64-Bit SP2
+- http://www.chip.de/downloads/Windows-7-Service-Pack-2-64-Bit_93967437.html
+- YDRBP-3D83W-TY26F-D46B2-XCKRJ || 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+# Gasterweiterungen
+- sudo apt-get install virtualbox-guest-additions-iso
+# set up the shared folder
+- cd ~/Schreibtisch
+- mkdir VMShare
+-> ~/Schreibtisch/VMShare
+-> name: share
+
+# ntop -> Netzwerktraffic beobachten
+apt-get install ntop
+- list of interfaces: wlan0, eth0, …
+- password for admin
+- sudo ntop
+- http://127.0.0.1:3000/ OR https://127.0.0.1:3001 
+- admin + pass
+
+# ownCloud
+- Download
+- unpack and copy to /var/www/html/owncloud
+- install dependencies 
+- sudo apt-get install -y php7.0-gd php7.0-zip php7.0-mysql mysql-client-5.7 mysql-server-5.7
+- create new user and pass with phpmyAdmin e.g. elshotodore
+- copy the following to a script and execute (set the right path to owncloud dir!)
+8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 
+#!/bin/bash
+ocpath='/var/www/html/owncloud'
+htuser='www-data'
+htgroup='www-data'
+rootuser='root'
+
+printf "Creating possible missing Directories\n"
+mkdir -p $ocpath/data
+mkdir -p $ocpath/assets
+mkdir -p $ocpath/updater
+
+printf "chmod Files and Directories\n"
+find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
+find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
+
+printf "chown Directories\n"
+chown -R ${rootuser}:${htgroup} ${ocpath}/
+chown -R ${htuser}:${htgroup} ${ocpath}/apps/
+chown -R ${htuser}:${htgroup} ${ocpath}/assets/
+chown -R ${htuser}:${htgroup} ${ocpath}/config/
+chown -R ${htuser}:${htgroup} ${ocpath}/data/
+chown -R ${htuser}:${htgroup} ${ocpath}/themes/
+chown -R ${htuser}:${htgroup} ${ocpath}/updater/
+
+chmod +x ${ocpath}/occ
+
+printf "chmod/chown .htaccess\n"
+if [ -f ${ocpath}/.htaccess ]
+ then
+  chmod 0644 ${ocpath}/.htaccess
+  chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
+fi
+if [ -f ${ocpath}/data/.htaccess ]
+ then
+  chmod 0644 ${ocpath}/data/.htaccess
+  chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+fi
+8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 8<---------- 
+- in browser go to localhost:8888/owncloud
+- done!
+
+###############################################################################################################
+### USEFUL LINKS
+###############################################################################################################
+# JSON - LINT
+http://jsonlint.com/
+
+###############################################################################################################
+### Other useful stuff for Linux
+###############################################################################################################
+# OpenGL
+- https://learnopengl.com/#!Getting-started/Creating-a-window
+
+------- GENERIC
+#bash history
+h <SEARCHTERM> - search your bash history (same as history | grep <SEARCHTERM>
+!<####> - run the command from history with this index
+
+#Changing terminal title (replace $@ by title)
+echo -ne "\033]0;$@\007"
+ 
+------- DOCKER
+# Run docker image with ports 80 and 82 exposed
+docker run -d --name <IMAGENAME> -p 80:80 -p 82:82 <IMAGENAME>
+
+#Execute a <COMMAND> inside running docker image e.g. shell, log tail etc.
+docker exec -it <IMAGNAME> bash
+docker exec -it <IMAGNAME> tail -f /var/log/apache2/error.log
+
+# Stop docker image
+@docker rm -vf <IMAGENAME> ||:
+
+# Remove old images (by time)
+8<-----------8<-----------8<-----------8<-----------8<-----------8<-----------8<-----------8<----------- 
+#!/bin/bash
+#docker ps -a | grep 'months ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+docker ps -a | grep 'days ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+docker ps -a | grep 'hours ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+
+#docker images | grep 'months ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+docker images | grep 'weeks ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+docker images | grep 'days ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+docker images | grep 'hours ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+
+# to forcibly remove images use -f
+#docker images | grep 'months ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
+docker images | grep 'weeks ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
+docker images | grep 'days ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
+docker images | grep 'hours ago' | awk '{print $3}' | xargs --no-run-if-empty docker rmi -f
+8<-----------8<-----------8<-----------8<-----------8<-----------8<-----------8<-----------8<-----------
+
+
+HBASE
+/opt
+ln -s hbase-<BLA>-<BLUB> hbase
+### .bash_rc 
+export HBASE_PREFIX=/opt/hbase
+export PATH=$PATH:$HBASE_PREFIX/bin
+
+### /opt/hbase/conf/hbase-env.sh 
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+### /opt/hbase/conf/hbase-site.xml -> 
+<configuration>
+	<property>
+		<name>hbase.rootdir</name>
+		<value>/data/hbase</value>
+	</property>
+	<property>
+		<name>hbase.cluster.distributed</name>
+		<value>false</value>
+	</property>
+</configuration>
+
+hbase-start.sh (in /opt/hbase/bin)
+hbase shell
+create 'htest', 'cf' (Create table 'htest' with column family 'cf')
+put 'htest', 'r1', 'cf:c1', 'v1' (put value 'v1' in column 'c1' in column family 'cf' in table 'htest')
+new value in new column, same cf
+put 'htest', 'r1', 'cf:c2', 'v2' '(put value 'v2' in column 'c2' in column family 'cf' in table 'htest')
+put 'htest', 'r3', 'cf:c3', 'v3'
+put 'htest', 'r4', 'cf:c4', 'v4'
+put 'htest', 'r5', 'cf:c5', 'v5'
+etc.
+scan 'htest'
+get 'htest', 'r2'  - retrieve row 'r2'
+put 'htest', 'r2', 'cf:c2', 'v2Updated' - update
+get 'htest', 'r2'  - retrieve row 'r2'
+delete 'htest', 'r1', 'cf:c2'
+#disable 'htest'
+#drop 'htest'
+
+AWK
+Batch process output of command
+docker ps | awk '{print $1}' | xargs docker stop (will stop all docker images with id <ID>)
+
+
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
+
+### Install
+# Isos
+- Win 7 Pro> http://winfuture.de/downloadvorschalt,3291.html
+- Win 10 inkl. Anniversary Upgrade > http://winfuture.de/downloadvorschalt,3226.html 
+- 7 Enterprise N - YDRBP-3D83W-TY26F-D46B2-XCKRJ
+- 7 ??? - 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
+- 7 Pro -
+
+# Create universal ISO with all versions
+- http://joshcellsoftwares.com/2011/09/winaio-maker-professional-all-in-one.html
+- http://joshcellsoftwares.com/Products/winaiomaker
+- Select AutoAIO, empty folder to place the iso in, Select x86 and x64 iso, start compilation
+
+# Downgrade the installed version
+- https://www.administrator.de/wissen/down-upgrade-windows-7-enterprise-professional-o-a-183117.html
+- http://mp7000.deviantart.com/art/Windows-7-Enterprise-Downgrade-159805048
+
+# IBM / Thinkpads, Thinkcenter etc.
+- Lenovo System Update -> https://support.lenovo.com/de/en/solutions/ht037696#update
