@@ -8,6 +8,9 @@ LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LI
 LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
 LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
 LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX LINUX 
+###### GENERAL INFO
+user name -> elshotodore
+
 
 ###### BE ROOT MY FRIEND
 su -
@@ -61,8 +64,6 @@ apt-get -y purge openjdk-\* \
 && exit
 
 
-
-
 #################################
 ### AS USER
 #################################
@@ -78,28 +79,30 @@ cd \
  
 
 
-###### phpMyAdmin (Check the urls)
+###### phpMyAdmin (Check version!)
 cd ~/Downloads \
-&& wget https://files.phpmyadmin.net/phpMyAdmin/4.6.6/phpMyAdmin-4.6.6-all-languages.tar.gz \
-&& tar xvzf phpMyAdmin-4.6.6-all-languages.tar.gz \
-&& mv phpMyAdmin-4.6.6-all-languages /var/www/html/
+&& wget https://files.phpmyadmin.net/phpMyAdmin/4.7.3/phpMyAdmin-4.7.3-all-languages.tar.gz \
+&& tar xvzf phpMyAdmin-4.7.3-all-languages.tar.gz \
+&& mv phpMyAdmin-4.7.3-all-languages /var/www/html/ \
+&& mv phpMyAdmin-4.7.3-all-languages.tar.gz DONE/ \
 && cd /var/www/html/phpMyAdmin-4.6.6-all-languages \
 && cp config.sample.inc.php config.inc.php \
 && sed -i "s/$cfg\['blowfish_secret'\] = '';/$cfg\['blowfish_secret'\] = 'ALLES SUPER GEHEIM HIER ABER WIE';/g" /var/www/html/phpMyAdmin-4.6.6-all-languages/config.inc.php
 && ln -s /var/www/html/phpMyAdmin-4.6.6-all-languages /var/www/html/phpmyadmin
 
 
-
-###### IntelliJ (Check the urls)
+###### IntelliJ (Check version!)
 cd ~/Downloads \
-&& wget https://download.jetbrains.com/idea/ideaIC-2016.3.4.tar.gz \
+&& wget https://download.jetbrains.com/idea/ideaIC-2017.2.tar.gz \
 && tar xvzf ideaIC-2017.2.tar.gz \
 && mv idea-IC-.* /opt \
 && ln -s /opt/idea-IC-.* /opt/idea \
 && mv ideaIC-2017.2.tar.gz DONE/ \
 && echo "export PATH=\$PATH:/opt/idea/bin" >> ~/.bash_path
 
-###### Elastic Search Setup (Check the url)
+
+
+###### Elastic Search Setup (Check version!)
 cd ~/Downloads \
 && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.0.tar.gz \
 && tar xvzf elasticsearch-5.5.0.tar.gz \
@@ -108,7 +111,7 @@ cd ~/Downloads \
 && mv elasticsearch-5.5.0.tar.gz DONE/ \
 && echo "export PATH=\$PATH:/opt/elasticsearch/bin" >> ~/.bash_path
 
-##### Elastic Search Configuration (CLUSTER NAME, NODE NAME, PATH TO DATA, PATH TO LOGS)
+##### Elastic Search Configuration (CLUSTER NAME = m92, NODE NAME = node 1, PATH TO DATA = /data/elasticsearch/data, PATH TO LOGS = /data/elasticsearch/logs)
 cp /opt/elasticsearch/config/elasticsearch.yml /opt/elasticsearch/config/elasticsearch.yml_ORIGINAL \
 && sed -i "s/#cluster.name: my-application/cluster.name: m92/g" /opt/elasticsearch/config/elasticsearch.yml \
 && sed -i "s/#node.name: node-1/node.name: node1/g" /opt/elasticsearch/config/elasticsearch.yml \
@@ -117,7 +120,7 @@ cp /opt/elasticsearch/config/elasticsearch.yml /opt/elasticsearch/config/elastic
 
 
 
-###### Kibana (Check the url)
+###### Kibana (Check version!)
 cd ~/Downloads \
 && wget https://artifacts.elastic.co/downloads/kibana/kibana-5.5.0-linux-x86_64.tar.gz \
 && tar xvzf kibana-5.5.0-linux-x86_64.tar.gz \
@@ -126,19 +129,19 @@ cd ~/Downloads \
 && mv kibana-5.5.0-linux-x86_64.tar.gz DONE/ \
 && echo "export PATH=\$PATH:/opt/kibana/bin" >> ~/.bash_path
 
-###### Kibana Configuration
+###### Kibana Configuration (SERVER NAME = kibana-m92)
 cp /opt/kibana/config/kibana.yml /opt/kibana/config/kibana.yml_ORIGINAL \
 && sed -i "s/#server.name: \"your-hostname\"/server.name: \"kibana-m92\"/g" /opt/kibana/config/kibana.yml
 
 
 
-###### Solr Setup (Check the url)
+###### Solr Setup (Check version!)
 cd ~/Downloads \
-&& wget http://apache.lauf-forum.at/lucene/solr/6.4.1/solr-6.4.1.tgz \
-&& tar xvzf solr-6.4.1.tgz \
-&& mv solr-6.4.1 /opt \
-&& ln -s /opt/solr-6.4.1 /opt/solr \
-&& mv solr-6.4.1.tgz DONE/ \
+&& wget http://apache.lauf-forum.at/lucene/solr/6.6.0/solr-6.6.0.tgz \
+&& tar xvzf solr-6.6.0.tgz \
+&& mv solr-6.6.0 /opt \
+&& ln -s /opt/solr-6.6.0 /opt/solr \
+&& mv solr-6.6.0.tgz DONE/ \
 && echo "export PATH=\$PATH:/opt/solr/bin" >> ~/.bash_path
 
 ##### SOLR Configuration 
@@ -153,7 +156,7 @@ cd ~/Downloads \
 see > https://github.com/elshotodore/retarded-submarine-from-space/tree/master/scripts/solr/labomba
 
 # More SOLR setup 
-ls- ./solr create_core -c <CORE_NAME>
+- ./solr create_core -c <CORE_NAME>
 - /opt/solr/server/solr/<CORE_NAME>
 - set data dir, index dir, data import handler (data-config.xml) etc.
 
@@ -193,30 +196,34 @@ DB355FD2 E2009690 D3F8B535 5DF08DDA
 ----- END LICENSE ----
 
 
-IntelliJ 14.1.4
-ychon
-11298-D4XZY-Y97M4-D6QNW-TW3K2-91IQ7
-
-phpStorm
-james
-===== LICENSE BEGIN ===== 
-2535-D78561T
-00002GsyIOk9pydBM!iftABgtJDVAy
-faN47vQqIMLKC!uc"4YORRqEc8!1j2
-I6iSfcLcCwXP"7OefWGoA25LEcDMEh
-===== LICENSE END =====
-
-Username : Admin
-Activation Key :
-39871-D93633T
-00000fgoycKNF8rjD9mBNntslpAmx6
-LBnoXXnyAVQZKic6h2″oA7UIsNc8SV
-rEEVOyRH7wTdOC!evOlC7t46kx4ZTP
-
 ###################################################################################################################
-### Setup
+### Setup of other stuff
 ###################################################################################################################
-Now setup individual programs
+# git
+- git config --global user.email "<EMAIL>"
+- git config --global user.name "<USERNAME>"
+- adding ssh keys -> https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+- change the default editor for git > git config --global core.editor subl
+
+
+
+# Browser Addons
+- ublock origin
+- Advanced REST client
+- Get Them All Downloader
+
+
+# Sublime text updates
+- https://packagecontrol.io/installation
+- View / Console
+# Sublime text plugins
+- Package Control - Install Packages
+- Sublime Server
+- Pretty JSON
+- Word Count
+- AWK Highlighting
+
+
 
 # Kodi Media Center
 # http://kodi.wiki/view/HOW-TO:Install_Kodi_for_Linux
@@ -238,43 +245,30 @@ cd ~/Downloads \
 && wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
 && dpkg -i steam_latest.deb
 
-# Sublime text updates
-- https://packagecontrol.io/installation
-- View / Console
-# Sublime text plugins
-- Package Control - Install Packages
-- Sublime Server
-- Pretty JSON
-- Word Count
-- AWK Highlighting
 
-# git
-- git config --global user.email "<EMAIL>"
-- git config --global user.name "<USERNAME>"
-- adding ssh keys -> https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
-- change the default editor for git > git config --global core.editor subl
-
-# Browser Addons
-- ublock origin
-- Advanced REST client
-- Get Them All Downloader
 
 # Atom editor (Check the version)
 # https://atom.io/
 cd ~/Downloads \
-&& wget https://github.com/atom/atom/releases/download/v1.14.3/atom-amd64.tar.gz \
+&& wget https://github.com/atom/atom/releases/download/v1.18.0/atom-amd64.tar.gz \
 && tar xzvf atom-amd64.tar.gz \
-&& mv atom-1.14.3-amd64 /opt \
-&& ln -s /opt/atom-1.14.3-amd64 /opt/atom \
+&& mv atom-1.18.0-amd64 /opt \
+&& ln -s /opt/atom-1.18.0-amd64 /opt/atom \
 && mv atom-amd64.tar.gz DONE/ \
 && echo "export PATH=\$PATH:/opt/atom" >> ~/.bash_path \
 && source ~/.bash_path
 
-# Nuclide (ide for react) (Check theato	 version)
-# https://nuclide.io/
+
+
+# Nuclide (ide for react) (Check the atom version)
+# https://nuclide.io/docs/editor/setup/#installation-1
+
+
 
 # Kafka – check for latest version
-- http://www.apache.org/dyn/closer.lua/kafka
+- https://kafka.apache.org/downloads
+
+
 
 # Virtual Box
 # Windows 7 64-Bit ISO
@@ -290,6 +284,8 @@ cd ~/Downloads \
 -> ~/Schreibtisch/VMShare
 -> name: share
 
+
+
 # ntop -> Netzwerktraffic beobachten
 apt-get install ntop
 - list of interfaces: wlan0, eth0, …
@@ -297,6 +293,8 @@ apt-get install ntop
 - sudo ntop
 - http://127.0.0.1:3000/ OR https://127.0.0.1:3001 
 - admin + pass
+
+
 
 # ownCloud
 - Download

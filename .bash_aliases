@@ -76,6 +76,9 @@ alias more='less'
 
 alias phps='phpstorm.sh &'
 alias ij='idea.sh &'
+alias ws='cd ~/workspace'
+alias gpr='git pull --rebase'
+alias gprm='git pull --rebase origin master'
 
 ##################
 # User defined functions
