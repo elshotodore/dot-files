@@ -74,8 +74,7 @@ alias webserver='python -m SimpleHTTPServer 8000 | xdg-open http://localhost:800
 # less > more
 alias more='less'
 
-alias phps='phpstorm.sh &'
-alias ij='idea.sh &'
+alias ws='cd ~/workspace'
 
 ##################
 # User defined functions

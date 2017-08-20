@@ -37,7 +37,7 @@ apt-get -y purge openjdk-\* \
 && apt-get -y install filezilla \g
 && apt-get -y install gparted \
 && apt-get -y install rdesktop \
-&& apt-get -y install guake \
+&& apt-get -y install terminator \
 && apt-get -y install virtualbox virtualbox-qt virtualbox-dkms virtualbox-guest-dkms \
 && apt-get -y install apache2 \
 && sed -i 's/Listen 80/Listen 8888/g' /etc/apache2/ports.conf \
@@ -462,6 +462,8 @@ WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS WINDOWS 
 - 7 Enterprise N - YDRBP-3D83W-TY26F-D46B2-XCKRJ
 - 7 ??? - 33PXH-7Y6KF-2VJC9-XBBR8-HVTHH
 - 7 Pro -
+- WORKING with Win_7_SP1_ All_Versions.iso for Pro > MTWVG-GV6G8-VGTY4-Q2YKW-FTQH8
+
 
 # Create universal ISO with all versions
 - http://joshcellsoftwares.com/2011/09/winaio-maker-professional-all-in-one.html
