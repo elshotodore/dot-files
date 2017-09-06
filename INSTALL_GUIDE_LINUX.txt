@@ -161,6 +161,24 @@ see > https://github.com/elshotodore/retarded-submarine-from-space/tree/master/s
 - set data dir, index dir, data import handler (data-config.xml) etc.
 
 
+
+##### Slack
+- download -> https://slack.com/downloads/linux
+- sudo dpkg -i <DOWNLOADED_PACKAGEW>.deb
+- awinglobal
+- Sign in and authenticate with with Microsoft Authenticator (Phone)
+
+
+
+
+##### VPN Awin
+- ssh -L 3389:172.22.0.141:3389 -p 24242 FIRSTNAME.LASTNAME@shell.zanox.com
+- rdesktop -u FIRSTNAME.LASTNAME -d zanox-com localhost
+-> 
+	- sudo apt-get install sshuttle	
+	- sudo sshuttle -r FIRSTNAME.LASTNAME@shell.zanox.com:24242 0.0.0.0/0 --dns
+
+
 ###################################################################################################################
 ### Licenses
 ###################################################################################################################
