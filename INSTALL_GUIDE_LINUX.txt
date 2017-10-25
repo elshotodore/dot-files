@@ -124,11 +124,15 @@ cp /opt/elasticsearch/config/elasticsearch.yml /opt/elasticsearch/config/elastic
 && sed -i "s/#path.logs: \/path\/to\/logs/path.logs: \/data\/elasticsearch\/logs/g" /opt/elasticsearch/config/elasticsearch.yml
 
 ##### Elastic Search plugins
-- To enable support for site plugins add the following to config.yml
+- To enable support for site plugins in elastic search > 5.x add the following to config.yml
 http.cors.enabled : true
 http.cors.allow-origin : "*"
 http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
 http.cors.allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length
+
+- with x-pack security
+http.cors.allow-credentials: true
+http.cors.allow-headers: X-Requested-With,X-Auth-Token,Content-Type, Content-Length, Authorization
 
 -- Elastic HQ
 - http://www.elastichq.org/gettingstarted.html -> https://github.com/royrusso/elasticsearch-HQ/zipball/master
