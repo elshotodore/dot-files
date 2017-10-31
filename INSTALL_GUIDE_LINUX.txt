@@ -37,7 +37,7 @@ apt-get -y purge openjdk-\* \
 && java -version \
 && apt-get -y install build-essential \
 && apt-get -y install curl \
-&& apt-get -y install filezilla \g
+&& apt-get -y install filezilla \
 && apt-get -y install gparted \
 && apt-get -y install rdesktop \
 && apt-get -y install guake \
