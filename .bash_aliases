@@ -7,6 +7,9 @@ alias ll='ls -la'
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
 
+## Show seconds as well ##
+alias llt='ls -la --full-time'
+
 # Clear the terminal
 alias cls='clear'
 
@@ -64,17 +67,20 @@ alias h='history | grep '
 
 alias install='sudo apt-get install '
 
-alias sublime='sublime-text-2 '
 # Sublime-text 3
-alias sub='/opt/sublime_text/sublime_text '
+alias sublime='/opt/sublime_text/sublime_text '
 
 # Simple Web server and launch browser if available
 alias webserver='python -m SimpleHTTPServer 8000 | xdg-open http://localhost:8000'
 
 # less > more
 alias more='less'
-
+alias lmnt01='rdesktop l-mnt-01.zanox-live.de -ufrank.vogel -dZANOX-LIVE.de -p- -g1280x1024'
+alias rdp='rdesktop l-mnt-01.zanox-live.de -ufrank.vogel -dZANOX-LIVE.de -p- -g1280x1024'
 alias ws='cd ~/workspace'
+alias gpr='git pull --rebase'
+alias gprm='git pull --rebase origin master'
+alias mvn305='/opt/mvn305/bin/mvn'
 
 ##################
 # User defined functions
