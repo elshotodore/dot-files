@@ -81,7 +81,8 @@ alias ws='cd ~/workspace'
 alias gpr='git pull --rebase'
 alias gprm='git pull --rebase origin master'
 alias mvn305='/opt/mvn305/bin/mvn'
-
+# terminator with seven splits horizontally
+alias solrterm='terminator -m --layout=solrsearch7splits'
 ##################
 # User defined functions
 ##################
