@@ -84,8 +84,8 @@ alias mvn305='/opt/mvn305/bin/mvn'
 # terminator with seven splits horizontally
 alias solrterm='terminator -m --layout=solrsearch7splits'
 
-alias zkstart='/opt/zookeeper/bin/zkServer.sh start'
-alias zkstop='/opt/zookeeper/bin/zkServer.sh stop'
+alias zookeeperstart='/opt/zookeeper/bin/zkServer.sh start'
+alias zookeeperstop='/opt/zookeeper/bin/zkServer.sh stop'
 alias kafkastart='/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties'
 alias kafkaconnectstart='/opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties'
 
