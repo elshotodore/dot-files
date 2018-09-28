@@ -88,6 +88,8 @@ alias zookeeperstart='/opt/zookeeper/bin/zkServer.sh start'
 alias zookeeperstop='/opt/zookeeper/bin/zkServer.sh stop'
 alias kafkastart='/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties'
 alias kafkaconnectstart='/opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties'
+alias elasticsearchstart='/opt/elasticsearch/bin/elasticsearch'
+alias kibanastart='/opt/kibana/bin/kibana'
 
 ##################
 # User defined functions
