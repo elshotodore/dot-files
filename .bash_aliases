@@ -78,12 +78,6 @@ alias more='less'
 alias lmnt01='rdesktop l-mnt-01.zanox-live.de -ufrank.vogel -dZANOX-LIVE.de -p- -g1280x1024'
 alias rdp='rdesktop l-mnt-01.zanox-live.de -ufrank.vogel -dZANOX-LIVE.de -p- -g1280x1024'
 alias ws='cd ~/workspace'
-alias gpr='git pull --rebase'
-alias gprm='git pull --rebase origin master'
-alias mvn305='/opt/mvn305/bin/mvn'
-# terminator with seven splits horizontally
-alias solrterm='terminator -m --layout=solrsearch7splits'
-
 alias zookeeperstart='/opt/zookeeper/bin/zkServer.sh start'
 alias zookeeperstop='/opt/zookeeper/bin/zkServer.sh stop'
 alias kafkastart='/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties'
