@@ -13,8 +13,9 @@ compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
-source /home/elshotodore/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/elshotodore/.zsh/zsh_prompt
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh_prompt
+
 #export PS1="[%* - %D][${DOCKER_HOST:0:17}] %d %% "
 alias ls='ls --color=auto'
 alias ll='ls -la'

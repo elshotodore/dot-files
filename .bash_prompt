@@ -518,4 +518,4 @@ PS2="└─▪ "
 
 
 
-PROMPT_COMMAND=prompt
+PROMPT_COMMAND=$(prompt)
