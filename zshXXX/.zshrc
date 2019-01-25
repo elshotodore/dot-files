@@ -19,6 +19,7 @@ source /home/elshotodore/.zsh/zsh_prompt
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias h='history | grep '
+alias cls='clear'
 alias ws='cd ~/workspace'
 alias zookeeperstart='/opt/zookeeper/bin/zkServer.sh start'
 alias zookeeperstop='/opt/zookeeper/bin/zkServer.sh stop'
