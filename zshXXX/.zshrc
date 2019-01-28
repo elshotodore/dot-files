@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=5000
+SAVEHIST=5000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -14,7 +14,13 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh_prompt
+
+source ~/.zsh/zshrc.sh
+XUSER="[%{$fg_bold[green]%}$USERNAME%{$reset_color%}]"
+XHOST="[%{$fg[green]%}$HOST%{$reset_color%}]"
+XPATH="[%{$fg[cyan]%}%/%{$reset_color%}]"
+PROMPT="$XUSER$XHOST$XPATH$(git_super_status)"
+
 
 #export PS1="[%* - %D][${DOCKER_HOST:0:17}] %d %% "
 alias ls='ls --color=auto'
