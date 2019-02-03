@@ -34,3 +34,7 @@ alias kafkastart='/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.
 alias kafkaconnectstart='/opt/kafka/bin/connect-distributed.sh /opt/kafka/config/connect-distributed.properties'
 alias elasticsearchstart='/opt/elasticsearch/bin/elasticsearch'
 alias kibanastart='/opt/kibana/bin/kibana'
+
+alias monitormodestart='sudo airmon-ng start wlx841b5e968b2c'
+alias monitormodestop='sudo airmon-ng stop wlan0mon'
+alias bessidestart='cd /data/wifi/bessidelogs && sudo besside-ng wlan0mon'
